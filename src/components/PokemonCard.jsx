@@ -45,13 +45,13 @@ const PokemonCard = ({ pokemon, onAdd, onRemove, isSelected }) => {
 
   // handlers;
   const handleAdd = (e) => {
-    // console.log("Adding:", pokemon); // 확인용 로그
-    e.stopPropagation(); //  이벤트 버블링 : 부모컴포넌트에 이벤트가 걸리면 자식한테도
+    e.stopPropagation(); //  이벤트 버블링 방지 : 하위요소에서 상위요소로의 이벤트 전파 방식 으로, 말그대로 HTML 구조상 자식요소에 발생한 이벤트가 상위의 부모요소에까지 영향을 미치는 것
     dispatch(addPokemon({ id: pokemon.id }));
     if (onAdd) onAdd();
   };
 
-  const handleRemove = () => {
+  const handleRemove = (e) => {
+    e.stopPropagation();
     dispatch(deletePokemon({ id: pokemon.id }));
     if (onRemove) onRemove();
   };
@@ -77,9 +77,9 @@ const PokemonCard = ({ pokemon, onAdd, onRemove, isSelected }) => {
         <Button
           $primary
           style={{ marginTop: "10px", padding: "5px 10px", fontSize: "12px" }}
-          onClick={() => {
-            handleRemove(pokemon.id);
-          }}
+          onClick={
+            handleRemove
+          }
         >
           삭제
         </Button>

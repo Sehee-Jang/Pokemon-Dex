@@ -3,11 +3,11 @@ import styled from "styled-components";
 import Button from "./Button";
 import { useDispatch } from "react-redux";
 import { addPokemon, deletePokemon } from "../redux/modules/cards";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Card = styled.div`
-  border: 1px solid rgb(221, 221, 221);
-  background-color: rgb(255, 255, 255);
+  border: 1px solid #ddd;
+  background-color: #fff;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 8px;
@@ -15,13 +15,17 @@ const Card = styled.div`
   padding: 10px;
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
+  &:hover {
+    transform: translateY(-10px);
+    transition: transform 0.3s;
+  }
 `;
 
-const PokemonInfo = styled.p`
+const PokemonInfo = styled.div`
   margin-top: 10px;
 `;
 
-const PokemonName = styled.h2`
+const PokemonName = styled.p`
   font-size: 14px;
   font-weight: bold;
   margin: 5px 0px;
@@ -57,11 +61,6 @@ const PokemonCard = ({ pokemon, onAdd, onRemove, isSelected }) => {
   };
 
   return (
-    // <Link
-    //   to={`/details/${pokemon.id}`}
-    //   onClick={function (e) {
-    //   }}
-    // >
     <Card onClick={goToDetail}>
       <img
         style={{ width: "100px", height: "100px" }}
@@ -77,9 +76,7 @@ const PokemonCard = ({ pokemon, onAdd, onRemove, isSelected }) => {
         <Button
           $primary
           style={{ marginTop: "10px", padding: "5px 10px", fontSize: "12px" }}
-          onClick={
-            handleRemove
-          }
+          onClick={handleRemove}
         >
           삭제
         </Button>
@@ -94,7 +91,6 @@ const PokemonCard = ({ pokemon, onAdd, onRemove, isSelected }) => {
         </Button>
       )}
     </Card>
-    // </Link>
   );
 };
 

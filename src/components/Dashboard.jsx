@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import PokemonCard from "./PokemonCard";
+import { PokemonContext } from "../shared/Router.jsx";
 
 const DashboardContainer = styled.div`
   display: flex;
@@ -27,9 +28,9 @@ const SelectedPokemons = styled.div`
 
 const BeforeSelect = styled.ul`
   width: 100px;
-  height: 100px;
-  background-color: rgb(255, 255, 255);
-  border: 2px dashed rgb(204, 204, 204);
+  height: 218px;
+  background-color: #fff;
+  border: 2px dashed #ccc;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -37,12 +38,12 @@ const BeforeSelect = styled.ul`
 `;
 
 // 선택한 6개의 포켓몬을 표시하고, 포켓몬을 선택 해제
-const Dashboard = ({ selectedPokemon, onRemovePokemon }) => {
+const Dashboard = ({ onRemovePokemon }) => {
+  const { selectedPokemon } = useContext(PokemonContext);
+
   return (
     <DashboardContainer>
-      <DashboardTitle>
-        나만의 포켓몬: 이곳에는 선택한 6개의 포켓몬을 표시
-      </DashboardTitle>
+      <DashboardTitle>나만의 포켓몬</DashboardTitle>
 
       <SelectedPokemons>
         {selectedPokemon.length === 0 ? (

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import MOCK_DATA from "../mock.js";
 import Button from "../components/Button.jsx";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 
 const CustomButton = styled(Button)`
   padding: 0.6em 1.2em;
@@ -39,17 +39,14 @@ const CardDetails = () => {
   const pokemon = MOCK_DATA.find((p) => p.id === pokemonId);
 
   const params = useParams();
-  console.log("params: ", params);
 
   const targetPokemon = MOCK_DATA.find(function (pokemon) {
     return pokemon.id === Number(params.id);
   });
-  // console.log("targetPokemon: ", targetPokemon);
 
   if (!pokemon) {
     return <div>포켓몬을 찾을 수 없습니다.</div>;
   }
-  // console.log(pokemon);
 
   return (
     <CardContainer>

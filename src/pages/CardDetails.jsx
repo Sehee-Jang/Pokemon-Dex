@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import MOCK_DATA from "../mock.js";
 import Button from "../components/Button.jsx";
-import { useParams, useNavigate, useLocation } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const CustomButton = styled(Button)`
   padding: 0.6em 1.2em;

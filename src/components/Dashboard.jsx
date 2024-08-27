@@ -26,7 +26,15 @@ const SelectedPokemons = styled.div`
   justify-items: center;
 `;
 
-const BeforeSelect = styled.ul`
+const BeforeSelectContainer = styled.ul`
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  width: 100%;
+  justify-items: center;
+`;
+
+const BeforeSelect = styled.li`
   width: 100px;
   height: 218px;
   background-color: #fff;
@@ -41,19 +49,28 @@ const BeforeSelect = styled.ul`
 const Dashboard = ({ onRemovePokemon }) => {
   const { selectedPokemon } = useContext(PokemonContext);
 
+  function repeatCard() {
+    let emptyCardArray = [];
+    for (let i = 0; i < 6; i++) {
+      emptyCardArray.push(
+        <BeforeSelect key={i}>
+          <img
+            style={{ width: "50px", height: "50px" }}
+            src='https://react-6-pokemon.vercel.app/assets/pokeball-13iwdk7Y.png'
+            alt='Poketball Image'
+          />
+        </BeforeSelect>
+      );
+    }
+    return emptyCardArray;
+  }
   return (
     <DashboardContainer>
       <DashboardTitle>나만의 포켓몬</DashboardTitle>
 
       <SelectedPokemons>
         {selectedPokemon.length === 0 ? (
-          <BeforeSelect>
-            <img
-              style={{ width: "50px", height: "50px" }}
-              src='https://react-6-pokemon.vercel.app/assets/pokeball-13iwdk7Y.png'
-              alt='Poketball Image'
-            />
-          </BeforeSelect>
+          <BeforeSelectContainer>{repeatCard()}</BeforeSelectContainer>
         ) : (
           selectedPokemon.map((pokemon) => (
             <PokemonCard

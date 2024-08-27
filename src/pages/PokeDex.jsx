@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Dashboard from "../components/Dashboard";
 import PokemonList from "../components/PokemonList";
 import styled from "styled-components";
@@ -14,6 +14,20 @@ const DexContainer = styled.div`
 // 포켓몬 도감 페이지
 const PokeDex = () => {
   const { selectedPokemon, setSelectedPokemon } = useContext(PokemonContext);
+
+  // 로컬 스토리지에서 상태를 불러옴 getItem
+  useEffect(() => {
+    const savedPokemon = JSON.parse(localStorage.getItem("selectedPokemon"));
+
+    if (savedPokemon) {
+      setSelectedPokemon(savedPokemon);
+    }
+  }, [setSelectedPokemon]);
+
+  // 상태가 변경될 때마다 로컬 스토리지에 저장 setItem
+  useEffect(() => {
+    localStorage.setItem("selectedPokemon", JSON.stringify(selectedPokemon));
+  }, [selectedPokemon]);
 
   // 선택한 포켓몬을 대시보드에 추가
   const addPokemon = (pokemon) => {

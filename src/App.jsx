@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Router from "./shared/Router";
 import GlobalStyle from "./styles/GlobalStyle";
 
 const App = () => {
   const [selectedPokemon, setSelectedPokemon] = useState([]);
+
   return (
     <>
       <GlobalStyle />

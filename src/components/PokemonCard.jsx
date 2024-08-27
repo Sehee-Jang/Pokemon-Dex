@@ -17,7 +17,7 @@ const Card = styled.div`
   transition: transform 0.2s, box-shadow 0.2s;
   &:hover {
     transform: translateY(-10px);
-    transition: transform 0.3s;
+    transition: transform 0.5s;
   }
 `;
 
@@ -61,16 +61,19 @@ const PokemonCard = ({ pokemon, onAdd, onRemove, isSelected }) => {
   };
 
   return (
-    <Card onClick={goToDetail}>
-      <img
-        style={{ width: "100px", height: "100px" }}
-        src={pokemon.img_url}
-        alt={pokemon.korean_name}
-      />
-      <PokemonInfo>
-        <PokemonName>{pokemon.korean_name}</PokemonName>
-        <PokemonId>No. {pokemon.id}</PokemonId>
-      </PokemonInfo>
+    <Card>
+      {/* 온클릭 중첩 방지를 위해 Card컴포넌트가 아닌 하위 div 생성*/}
+      <div onClick={goToDetail}>
+        <img
+          style={{ width: "100px", height: "100px" }}
+          src={pokemon.img_url}
+          alt={pokemon.korean_name}
+        />
+        <PokemonInfo>
+          <PokemonName>{pokemon.korean_name}</PokemonName>
+          <PokemonId>No. {pokemon.id}</PokemonId>
+        </PokemonInfo>
+      </div>
 
       {isSelected ? (
         <Button

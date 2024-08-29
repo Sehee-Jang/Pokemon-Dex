@@ -7,9 +7,8 @@
 
 1. [기능](#기능)
 2. [프로젝트 구조](#프로젝트-구조)
-3. [설치 방법](#설치-방법)
-4. [사용 방법](#사용-방법)
-5. [의존성](#의존성)
+3. [사용 방법](#사용-방법)
+4. [의존성](#의존성)
 
 
 ## 기능
@@ -47,32 +46,6 @@ src/
 ├── App.jsx                    # 메인 애플리케이션 컴포넌트
 └── index.js                   # React 애플리케이션의 진입점
 ```
-
-
-
-## 설치 방법
-
-1. **레포지토리 클론**:
-    ```bash
-    git clone https://github.com/yourusername/pokemon-dashboard.git
-    cd pokemon-dashboard
-    ```
-
-2. **의존성 설치**:
-    ```bash
-    yarn install
-    ```
-
-3. **개발 서버 시작**:
-    ```bash
-    yarn dev
-    ```
-
-4. **프로덕션 빌드**:
-    ```bash
-    yarn build
-    ```
-
 
 ## 사용 방법
 
